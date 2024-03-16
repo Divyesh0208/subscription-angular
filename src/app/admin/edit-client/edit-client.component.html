@@ -1,0 +1,63 @@
+<mat-dialog-content>
+    <h2 class="position-fixed " mat-dialog-title class="text-secondary text-center">{{ isEdit? 'Edit' : 'Add'}} Client</h2>
+  
+    <form [formGroup]="clientForm" class="d-flex flex-column align-items-center ">
+        <mat-form-field appearance="outline">
+            <mat-label>Client Name</mat-label>
+            <input matInput placeholder="Client Name" required formControlName="clientName">
+            <mat-error *ngIf="clientForm.get('clientName')?.hasError('required')">Client Name is required</mat-error>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" type="email" required formControlName="email">
+            <mat-error *ngIf="clientForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="clientForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput placeholder="Mobile Number" type="tel" required formControlName="mobileNumber">
+            <mat-error *ngIf="clientForm.get('mobileNumber')?.hasError('required')">Mobile Number is required</mat-error>
+            <mat-error *ngIf="clientForm.get('mobileNumber')?.hasError('pattern')">Please enter valid Mobile Number with 10 digits</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Address</mat-label>
+            <textarea matInput placeholder="Address" rows="3" formControlName="address"></textarea>
+            <mat-error *ngIf="clientForm.get('address')?.hasError('required')">Address is required</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Subscription Date</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date" formControlName="startDate" readonly>
+                <input matEndDate placeholder="End date" formControlName="endDate" readonly>
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="clientForm.get('startDate')?.hasError('required') || clientForm.get('endDate')?.hasError('required')">
+                Subscription Date is required</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Password" required formControlName="password">
+            <mat-icon matSuffix (click)="toggleVisibility()">{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            <mat-error *ngIf="clientForm.get('password')?.hasError('required')">Password is required</mat-error>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" placeholder="Confirm Password" required formControlName="confirmPassword">
+            <mat-error *ngIf="clientForm.get('confirmPassword')?.hasError('required')">Confirm Password is required</mat-error>
+            <mat-error *ngIf="clientForm.get('confirmPassword')?.errors && clientForm.get('confirmPassword')?.hasError('passwordMismatch')">Passwords do not match</mat-error>
+          </mat-form-field>
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="!isEdit" mat-raised-button class="add-btn" (click)="addClient()">Add</button>
+  <button *ngIf="isEdit" mat-raised-button class="add-btn" (click)="editClient()">Edit</button>
+  <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,59 @@
+<mat-dialog-content>
+    <h2 class="position-fixed " mat-dialog-title class="text-secondary text-center">{{ isEdit? 'Edit' : 'Add'}} Customer</h2>
+  
+    <form [formGroup]="customerForm" class="d-flex flex-column align-items-center ">
+        <mat-form-field appearance="outline">
+            <mat-label>Customer Name</mat-label>
+            <input matInput placeholder="Customer Name" required formControlName="customerName">
+            <mat-error *ngIf="customerForm.get('customerName')?.hasError('required')">Customer Name is required</mat-error>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" type="email" required formControlName="email">
+            <mat-error *ngIf="customerForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="customerForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput placeholder="Mobile Number" type="tel" required formControlName="mobileNumber">
+            <mat-error *ngIf="customerForm.get('mobileNumber')?.hasError('required')">Mobile Number is required</mat-error>
+            <mat-error *ngIf="customerForm.get('mobileNumber')?.hasError('pattern')">Please enter valid Mobile Number with 10 digits</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <select matNativeControl required formControlName="country" (change)="onCountrySelect()">
+                <option disabled value="">Select Country</option>
+                <option *ngFor="let country of contries" [value]="country">{{country}}</option>
+            </select>
+            <mat-error *ngIf="customerForm.get('country')?.hasError('required')">Contry selection is required</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <select matNativeControl required formControlName="state" (change)="onStateSelect()">
+                <option disabled value="">Select State</option>
+                <option *ngFor="let state of states" [value]="state">{{state}}</option>
+            </select>
+            <mat-error *ngIf="customerForm.get('state')?.hasError('required')">State selection is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <select matNativeControl required formControlName="city">
+                <option disabled value="">Select City</option>
+                <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+            </select>
+            <mat-error *ngIf="customerForm.get('city')?.hasError('required')">City selection is required</mat-error>
+        </mat-form-field>
+        
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="!isEdit" mat-raised-button class="add-btn" (click)="addCustomer()">Add</button>
+  <button *ngIf="isEdit" mat-raised-button class="add-btn" (click)="editCustomer()">Edit</button>
+  <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+</mat-dialog-actions>

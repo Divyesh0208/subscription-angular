@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" matTooltip="Toggle sidebar" (click)="toggleSideBarFun()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="ms-4">Welcome <span class="fs-5 user"> {{clientName ? (clientName | uppercase ) : "ADMIN"}} </span></span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button> -->
+    <button mat-icon-button class="example-icon" matTooltip="Logout" aria-label="Example icon-button with share icon" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>

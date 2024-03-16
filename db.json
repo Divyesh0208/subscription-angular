@@ -1,0 +1,134 @@
+{
+  "admin": {
+    "email": "admin@gmail.com",
+    "password": "admin@123"
+  },
+  "clients": [
+    {
+      "clientName": "sandip",
+      "email": "sandip@gmail.com",
+      "mobileNumber": "1233212221",
+      "address": "green glades",
+      "startDate": "2024-03-14T18:30:00.000Z",
+      "endDate": "2024-03-20T18:30:00.000Z",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "0938"
+    },
+    {
+      "clientName": "sandip",
+      "email": "sandip1@gmail.com",
+      "mobileNumber": "1233212221",
+      "address": "green glades",
+      "startDate": "2024-03-13T18:30:00.000Z",
+      "endDate": "2024-03-21T18:30:00.000Z",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "ff2f"
+    },
+    {
+      "clientName": "sandip",
+      "email": "sandip2@gmail.com",
+      "mobileNumber": "1233212221",
+      "address": "green glades",
+      "startDate": "2024-03-13T18:30:00.000Z",
+      "endDate": "2024-03-21T18:30:00.000Z",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "e909"
+    },
+    {
+      "clientName": "yash rank",
+      "email": "yash@gmail.com",
+      "mobileNumber": "2111222422",
+      "address": "green glades",
+      "startDate": "2024-03-12T18:30:00.000Z",
+      "endDate": "2024-03-29T18:30:00.000Z",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "70f1"
+    }
+  ],
+  "customers": [
+    {
+      "id": "e574",
+      "customerName": "himanshu",
+      "email": "himanshu@gmail.com",
+      "mobileNumber": "1222222221",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Vadodara",
+      "clientId": "0938"
+    },
+    {
+      "id": "de04",
+      "customerName": "raxit",
+      "email": "raxit@gmail.com",
+      "mobileNumber": "2111122122",
+      "country": "China",
+      "state": "Guangdong",
+      "city": "Zhongshan",
+      "clientId": "0938"
+    },
+    {
+      "id": "fd45",
+      "customerName": "savan",
+      "email": "savan@gmail.com",
+      "mobileNumber": "2333222332",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Surat",
+      "clientId": "0938"
+    },
+    {
+      "id": "c45e",
+      "customerName": "sahil",
+      "email": "sahil@gmail.com",
+      "mobileNumber": "1233423322",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Vadodara",
+      "clientId": "70f1"
+    },
+    {
+      "id": "8f63",
+      "customerName": "ramesh",
+      "email": "ramesh@gmail.com",
+      "mobileNumber": "1244344224",
+      "country": "India",
+      "state": "Gujarat",
+      "city": "Vadodara",
+      "clientId": "70f1"
+    },
+    {
+      "id": "5215",
+      "customerName": "suresh",
+      "email": "suresh@gmail.com",
+      "mobileNumber": "1234422234",
+      "country": "Brazil",
+      "state": "Rio de Janeiro",
+      "city": "Nova Iguacu",
+      "clientId": "70f1"
+    },
+    {
+      "id": "45b8",
+      "customerName": "sukesh",
+      "email": "sukesh@gmail.com",
+      "mobileNumber": "1232212321",
+      "country": "China",
+      "state": "Beijing",
+      "city": "Beijing",
+      "clientId": "0938"
+    },
+    {
+      "id": "2823",
+      "customerName": "xyz",
+      "email": "xyz@gmail.com",
+      "mobileNumber": "1234443343",
+      "country": "China",
+      "state": "Beijing",
+      "city": "Beijing",
+      "clientId": "0938"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+<app-header (toggleSideBar)="sideBarToggler()"></app-header>
+
+<mat-drawer-container class="mb-3 dashboard-container">
+    
+  <mat-drawer mode="side" [opened]="sideBarOpen" >
+    <div class="sidebar">
+        <app-sidebar></app-sidebar>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content class="w-100 ">
+    
+    <div class="dashboard-content">
+        
+        <!-- <app-edit-client></app-edit-client> -->
+        <router-outlet></router-outlet>
+        
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

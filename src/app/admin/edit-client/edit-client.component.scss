@@ -1,0 +1,18 @@
+mat-form-field{
+    width: 80%;
+}
+
+mat-dialog-content{
+    // overflow-y: hidden;
+}
+
+mat-dialog-actions{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 20px;
+    .add-btn{
+        color: white;
+        background-color: #04AA6D; 
+    }
+}
