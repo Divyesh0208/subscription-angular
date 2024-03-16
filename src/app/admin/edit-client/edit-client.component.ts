@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import { ClientData } from '../client-list/client-list.component';
 import { BaseService } from 'src/app/service/base.service';
 import { Apiurl } from 'src/app/service/apiRoutepath';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-edit-client',
@@ -89,8 +90,14 @@ export class EditClientComponent implements OnInit {
     this.clientForm.get('address')?.setValue(this.clientPrefilledData.address);
     this.clientForm.get('startDate')?.setValue(this.clientPrefilledData.startDate);
     this.clientForm.get('endDate')?.setValue(this.clientPrefilledData.endDate);
-    this.clientForm.get('password')?.setValue(this.clientPrefilledData.password);
-    this.clientForm.get('confirmPassword')?.setValue(this.clientPrefilledData.password);
+
+    const decryptedBytes = CryptoJS.AES.decrypt(this.clientPrefilledData.password, 'zxcvbnm!@#$%^');
+    const decryptedPassword = decryptedBytes.toString(CryptoJS.enc.Utf8);
+    console.log("this.clientPrefilledData.password: ", this.clientPrefilledData.password);
+    console.log("decryptedPassword: ", decryptedPassword);
+
+    this.clientForm.get('password')?.setValue(decryptedPassword);
+    this.clientForm.get('confirmPassword')?.setValue(decryptedPassword);
   }
 
   addClient() {
@@ -99,6 +106,8 @@ export class EditClientComponent implements OnInit {
       console.log(this.clientForm.value);
       const addClientData = this.clientForm.value;
       delete addClientData['confirmPassword'];
+
+      addClientData.password =  CryptoJS.AES.encrypt(addClientData.password, 'zxcvbnm!@#$%^').toString();
       console.log("addClientData: ", addClientData);
 
       this.baseService.post(Apiurl.clients, addClientData).then( (res) => {

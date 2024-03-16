@@ -5,6 +5,7 @@ import { ClientData } from 'src/app/admin/client-list/client-list.component';
 import { Apiurl } from 'src/app/service/apiRoutepath';
 import { BaseService } from 'src/app/service/base.service';
 import Swal from 'sweetalert2';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private baseService: BaseService
+    private baseService: BaseService,
   ) { }
 
   ngOnInit(): void {
@@ -67,8 +68,10 @@ export class LoginComponent implements OnInit {
       
       let clientCheck = false;
       this.clients.find(client => {
+        const decryptedBytes = CryptoJS.AES.decrypt(client.password, 'zxcvbnm!@#$%^');
+        const decryptedPassword = decryptedBytes.toString(CryptoJS.enc.Utf8);
         console.log(client);
-        if((client.email === credentials.email) && (client.password === credentials.password)){
+        if((client.email === credentials.email) && (credentials.password === decryptedPassword)){
           clientCheck = true;
 
           client.id ? this.clientId = client.id : null;
